@@ -17,7 +17,7 @@ end
 def selects_the_titles_and_amount_over_goal_of_all_projects_that_have_met_their_funding_goal
   "SELECT projects.title, (pledges.amount - projects.funding_goal) FROM projects LEFT OUTER JOIN pledges ON pledges.project_id = projects.id WHERE pledges.amount >= projects.funding_goal GROUP BY pledges.project_id HAVING (pledges.amount - projects.funding_goal) >= 0"
   
-  "SELECT projects.title, SUM(pledges.amount) AS total FROM projects LEFT OUTER JOIN pledges ON pledges.project_id = projects.id GROUP BY pledges.project_id"
+  "SELECT projects.title, SUM(pledges.amount) - projects.funding.goal AS total FROM projects LEFT OUTER JOIN pledges ON pledges.project_id = projects.id GROUP BY pledges.project_id"
 end
 
 def selects_user_names_and_amounts_of_all_pledges_grouped_by_name_then_orders_them_by_the_summed_amount
