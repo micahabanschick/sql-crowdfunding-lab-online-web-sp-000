@@ -23,7 +23,7 @@ def selects_user_names_and_amounts_of_all_pledges_grouped_by_name_then_orders_th
 end
 
 def selects_the_category_names_and_pledge_amounts_of_all_pledges_in_the_music_category
-  "Write your SQL query Here"
+  "SELECT users.name, SUM(pledges.amount) FROM users INNER JOIN pledges ON pledges.user_id = users.id GROUP BY users.name ORDER BY SUM(pledges.amount)"
 end
 
 def selects_the_category_name_and_the_sum_total_of_the_all_its_pledges_for_the_books_category
